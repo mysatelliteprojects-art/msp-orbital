@@ -1,38 +1,95 @@
 ---
-// 定義 9 個官方連結與對應的顏色/標籤
+// Define link data with platform-specific minimalist SVG paths.
+// All SVGs optimized for minimal footprint (approx 24x24 viewboxes).
 const links = [
-  { name: "X (Twitter)", url: "https://x.com/MSP_Orbital", color: "#000000", subtitle: "即時動態" },
-  { name: "Reddit", url: "https://www.reddit.com/r/MSP_Orbital/", color: "#FF4500", subtitle: "社群討論" },
-  { name: "Quora", url: "https://msporbital.quora.com/", color: "#B92B27", subtitle: "知識問答" },
-  { name: "Medium", url: "https://medium.com/@MSP_Orbital", color: "#000000", subtitle: "深度文章" },
-  { name: "Substack", url: "https://substack.com/@msporbital", color: "#FF6719", subtitle: "電子報訂閱" },
-  { name: "Blogspot", url: "https://msp-orbital.blogspot.com/", color: "#F57D00", subtitle: "官方部落格" },
-  { name: "YouTube", url: "https://www.youtube.com/@msp_orbital", color: "#FF0000", subtitle: "影音頻道" },
-  { name: "Pinterest", url: "https://www.pinterest.com/msp_orbital/", color: "#E60023", subtitle: "視覺靈感" },
-  { name: "Instagram", url: "https://www.instagram.com/msp_orbital/", color: "#E4405F", subtitle: "生活風格" },
+  {
+    name: "X (Twitter)",
+    url: "https://x.com/MSP_Orbital",
+    subtitle: "Real-time Updates",
+    // X logo path
+    svgPath: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+  },
+  {
+    name: "Reddit",
+    url: "https://www.reddit.com/r/MSP_Orbital/",
+    subtitle: "Community Discussions",
+    // Reddit Alien face path
+    svgPath: "M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.561-1.249-1.249-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"
+  },
+  {
+    name: "Quora",
+    url: "https://msporbital.quora.com/",
+    subtitle: "Knowledge Exchange",
+    // Quora 'Q' path
+    svgPath: "M13.45 17.89c.99-.79 1.93-1.66 2.73-2.69 2.38-3.06 2.68-6.98.74-10.25C14.96 1.87 11.66.04 8.1.68 5.27 1.2 3.06 3.15 1.81 5.77c-2.08 4.36-.91 9.36 2.74 12.51 2.88 2.48 7.02 2.83 10.44 1.19.45.58.95 1.18 1.51 1.7.53.49 1.31.79 1.98.37.77-.47.76-1.47.41-2.19-.43-.89-1.02-1.72-1.72-2.49-1.18 1.21-2.38 2.41-3.6 3.56-.02-.02-.06-.04-.12-.07zm-2.33-1.43c-2.63 2.15-6.33 1.81-8.73-.62-2.78-2.8-2.82-7.34-.09-10.18 2.73-2.85 7.31-2.9 10.1-.12 2.8 2.78 2.87 7.31.16 10.17-.41.43-.86.82-1.35 1.17.11-.32.18-.66.21-1.03.04-.49-.18-1.03-.63-1.29-.68-.39-1.33.15-1.54.69-.21.55-.06 1.35.38 1.92-.14.16-.29.32-.45.46-.02-.06-.04-.11-.06-.17z"
+  },
+  {
+    name: "Medium",
+    url: "https://medium.com/@MSP_Orbital",
+    subtitle: "In-depth Articles",
+    // Medium icon path
+    svgPath: "M13.537 12c0 3.816-2.636 6.911-5.887 6.911S1.763 15.816 1.763 12s2.636-6.911 5.887-6.911S13.537 8.184 13.537 12zM16.934 12c0 3.655-1.125 6.617-2.514 6.617S11.906 15.655 11.906 12s1.125-6.617 2.514-6.617S16.934 8.345 16.934 12zM22.237 12c0 3.245-.341 5.874-.762 5.874s-.762-2.63-.762-5.874.341-5.874.762-5.874.762 2.63.762 5.874z"
+  },
+  {
+    name: "Substack",
+    url: "https://substack.com/@msporbital",
+    subtitle: "Newsletter",
+    // Substack icon path
+    svgPath: "M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"
+  },
+  {
+    name: "Blogspot",
+    url: "https://msp-orbital.blogspot.com/",
+    subtitle: "Official Blog",
+    // Blogger 'B' icon path
+    svgPath: "M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.552 16.068c-.104.754-.516 1.122-1.238 1.103l-3.972-.066a.615.615 0 0 1-.452-.179.784.784 0 0 1-.172-.473l-.069-3.431-2.632-.062c-.672 0-1.163-.492-1.163-1.163 0-.206.061-.403.179-.572l3.789-5.254a1.159 1.159 0 0 1 1.122-.466c.672.053 1.154.627 1.132 1.296l-.071 3.414 2.861.062a.85.85 0 0 1 .85.85c0 .376-.24.717-.596.85l-3.535 1.445.095 2.155c.031.286.031.527 0 .721l3.918.057c.621.015 1.034.448.955 1.136z"
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@msp_orbital",
+    subtitle: "Video Channel",
+    // YouTube play button path
+    svgPath: "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+  },
+  {
+    name: "Pinterest",
+    url: "https://www.pinterest.com/msp_orbital/",
+    subtitle: "Visual Inspiration",
+    // Pinterest 'P' path
+    svgPath: "M12 0C5.373 0 0 5.373 0 12c0 5.083 3.165 9.426 7.624 11.173-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.195.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.225.083.346-.09.373-.293 1.188-.332 1.355-.053.218-.173.265-.399.16-1.487-.693-2.416-2.865-2.416-4.611 0-3.753 2.728-7.203 7.866-7.203 4.13 0 7.339 2.944 7.339 6.882 0 4.108-2.589 7.414-6.182 7.414-1.207 0-2.341-.627-2.728-1.366 0 0-.597 2.273-.742 2.831-.269 1.037-1.002 2.32-1.492 3.108 1.124.334 2.318.518 3.553.518 6.627 0 12-5.373 12-12S18.627 0 12 0z"
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/msp_orbital/",
+    subtitle: "Lifestyle & Stories",
+    // Instagram camera icon path
+    svgPath: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.252-1.667 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.667-4.919-4.919-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.252 1.667-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.947.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.073-4.947-.2-4.354-2.617-6.782-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"
+  },
 ];
+
+const currentYear = new Date().getFullYear();
 ---
 
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MSP Orbital - Official Links</title>
-    <meta name="description" content="MSP Orbital 官方連結入口 - 極速瀏覽，無外部追蹤。" />
+    <meta name="description" content="MSP Orbital Official Links Portal - Explore the Universe of Information." />
     
     <style>
         :root {
-            --bg-color: #0f172a; /* 深邃宇宙藍 */
+            --bg-color: #0f172a;
             --text-color: #f8fafc;
-            --accent-color: #38bdf8; /* 軌道藍 */
+            --accent-color: #38bdf8;
             --card-bg: rgba(30, 41, 59, 0.7);
-            --card-hover: rgba(56, 189, 248, 0.15);
+            --card-hover: rgba(56, 189, 248, 0.2);
+            --card-border: rgba(255, 255, 255, 0.1);
         }
 
-        /* 系統字體堆疊：速度最快，不需要下載 */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -44,179 +101,135 @@ const links = [
             overflow-x: hidden;
         }
 
-        /* 背景星空效果 (純 CSS 繪製，不下載圖片) */
+        /* CSS-only subtle star background */
         .background-stars {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background-image: 
-                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
+                radial-gradient(1.5px 1.5px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 90px 40px, #fff, rgba(0,0,0,0));
             background-repeat: repeat;
             background-size: 200px 200px;
-            opacity: 0.3;
-            animation: drift 100s linear infinite;
+            opacity: 0.2;
+            animation: drift 120s linear infinite;
         }
-
-        @keyframes drift {
-            from { background-position: 0 0; }
-            to { background-position: 0 1000px; }
-        }
+        @keyframes drift { from { background-position: 0 0; } to { background-position: 0 1000px; } }
 
         main {
             width: 100%;
-            max-width: 600px;
-            padding: 2rem 1rem;
+            /* Wider max-width to accommodate 3x3 grid on desktop */
+            max-width: 960px;
+            padding: 3rem 1.5rem;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
+            flex-grow: 1; /* Ensures footer pushes down */
         }
 
-        /* SVG Logo 容器與動畫 */
+        /* Custom SVG Logo Section */
         .logo-container {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 2rem;
-            position: relative;
+            width: 160px; height: 160px; margin-bottom: 1.5rem;
         }
-        
-        /* 讓 Logo 有呼吸感 */
         .logo-svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.5));
+            width: 100%; height: 100%;
+            filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));
             animation: hoverFloat 6s ease-in-out infinite;
         }
-
-        @keyframes hoverFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* 軌道旋轉動畫 */
-        .orbit-ring {
-            transform-origin: center;
-            animation: spin 20s linear infinite;
-        }
-        .orbit-ring-reverse {
-            transform-origin: center;
-            animation: spin 25s linear infinite reverse;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes hoverFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .orbit-ring { transform-origin: center; animation: spin 20s linear infinite; }
+        .orbit-ring-reverse { transform-origin: center; animation: spin 25s linear infinite reverse; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
         h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 0 0 0.5rem 0;
-            letter-spacing: -0.05em;
+            font-size: 2.2rem; font-weight: 800; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;
             background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .tagline { color: #94a3b8; margin-bottom: 3.5rem; font-size: 1rem; text-align: center; }
 
-        p.tagline {
-            color: #94a3b8;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        /* 連結卡片區塊 */
+        /* RWD Grid Layout for Links */
         .links-grid {
             width: 100%;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr; /* Mobile: 1 column */
             gap: 1rem;
+        }
+
+        /* Tablet: 2 columns */
+        @media (min-width: 640px) {
+            .links-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+        }
+
+        /* Desktop: 3 columns as requested */
+        @media (min-width: 960px) {
+            .links-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         }
 
         .link-card {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            align-items: center; /* Center vertically */
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.25rem 1.5rem;
-            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            padding: 1.25rem;
+            border-radius: 16px;
             text-decoration: none;
             color: white;
-            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            backdrop-filter: blur(12px);
+            position: relative; overflow: hidden;
         }
 
-        /* 懸停效果：亮光掃過 */
+        /* Shine effect on hover */
         .link-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: 0.5s;
+            transition: 0.6s ease-in-out; transform: skewX(-20deg);
         }
 
         .link-card:hover {
-            transform: translateY(-2px) scale(1.01);
+            transform: translateY(-3px);
             background: var(--card-hover);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.6);
         }
+        .link-card:hover::after { left: 150%; }
+        .link-card:active { transform: scale(0.98) translateY(-1px); }
 
-        .link-card:hover::after {
-            left: 100%;
+        /* Platform Logo Styles */
+        .card-icon {
+            margin-right: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            flex-shrink: 0; /* Prevent squishing */
         }
-
-        .card-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .link-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .link-sub {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            margin-top: 4px;
-        }
-
-        .arrow-icon {
-            opacity: 0.5;
-            transition: transform 0.2s;
-        }
-
-        .link-card:hover .arrow-icon {
-            opacity: 1;
-            transform: translateX(5px);
+        /* Icon gets colored and slightly bigger on hover */
+        .link-card:hover .card-icon {
             color: var(--accent-color);
+            opacity: 1;
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px var(--accent-color));
         }
 
-        /* 頁尾 */
+        .card-content { display: flex; flex-direction: column; overflow: hidden; }
+        .link-name { font-weight: 700; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .link-sub { font-size: 0.8rem; color: #94a3b8; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
         footer {
-            margin-top: 4rem;
-            padding-bottom: 2rem;
+            margin-top: auto; /* Pushes footer to bottom */
+            padding: 2rem 0;
             color: #64748b;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            text-align: center;
         }
 
-        /* 針對小螢幕優化 */
+        /* Smaller mobile adjustments */
         @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            .logo-container { width: 150px; height: 150px; }
+            h1 { font-size: 1.8rem; }
+            .logo-container { width: 120px; height: 120px; }
+            main { padding: 2rem 1rem; }
         }
     </style>
 </head>
@@ -231,27 +244,11 @@ const links = [
                         <stop offset="0%" stop-color="#38bdf8" />
                         <stop offset="100%" stop-color="#0284c7" />
                     </radialGradient>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                        <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
+                    <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
                 </defs>
-                
-                <g class="orbit-ring-reverse" style="opacity: 0.3;">
-                    <ellipse cx="100" cy="100" rx="90" ry="30" fill="none" stroke="#fff" stroke-width="1" transform="rotate(45 100 100)" />
-                    <circle cx="190" cy="100" r="3" fill="#fff" transform="rotate(45 100 100)" />
-                </g>
-
-                <g class="orbit-ring" style="opacity: 0.6;">
-                    <ellipse cx="100" cy="100" rx="90" ry="30" fill="none" stroke="#38bdf8" stroke-width="2" transform="rotate(-45 100 100)" />
-                    <circle cx="10" cy="100" r="5" fill="#38bdf8" transform="rotate(-45 100 100)" filter="url(#glow)" />
-                </g>
-
+                <g class="orbit-ring-reverse" style="opacity: 0.3;"><ellipse cx="100" cy="100" rx="90" ry="30" fill="none" stroke="#fff" stroke-width="1" transform="rotate(45 100 100)" /><circle cx="190" cy="100" r="3" fill="#fff" transform="rotate(45 100 100)" /></g>
+                <g class="orbit-ring" style="opacity: 0.6;"><ellipse cx="100" cy="100" rx="90" ry="30" fill="none" stroke="#38bdf8" stroke-width="2" transform="rotate(-45 100 100)" /><circle cx="10" cy="100" r="5" fill="#38bdf8" transform="rotate(-45 100 100)" filter="url(#glow)" /></g>
                 <circle cx="100" cy="100" r="25" fill="url(#planetGrad)" filter="url(#glow)" />
-                
                 <text x="100" y="155" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" letter-spacing="2" style="font-family: sans-serif; opacity: 0.8;">MSP</text>
             </svg>
         </div>
@@ -261,21 +258,20 @@ const links = [
 
         <div class="links-grid">
             {links.map((link) => (
-                <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
+                <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card" aria-label={link.name}>
+                    <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d={link.svgPath} />
+                    </svg>
                     <div class="card-content">
                         <span class="link-name">{link.name}</span>
                         <span class="link-sub">{link.subtitle}</span>
                     </div>
-                    <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
                 </a>
             ))}
         </div>
 
         <footer>
-            &copy; {new Date().getFullYear()} MSP Orbital. All Systems Nominal.
+            &copy; {currentYear} MSP Orbital. All Systems Nominal.
         </footer>
     </main>
 </body>
